@@ -1,0 +1,20 @@
+
+<button class="btn btn-primary mx-1 my-2" type="button" (click)="showAddForm = true">Add New Student</button>
+
+<div [hidden]="!showAddForm">
+  <h1>Add New Student</h1>
+  <label for="">ID</label>
+  <input class="form-control" type=" text" [(ngModel)]="nstd._id">
+  <label for="">Name</label>
+  <input class="form-control" type=" text" [(ngModel)]="nstd.name">
+  <label for="">Department</label>
+  <!-- <input class="form-control" type=" number" [(ngModel)]="nstd.department"> -->
+  <select name="" id="" [(ngModel)]="nstd.department" class="form-select">
+    <option value="1">Mansoura</option>
+    <option value="2">Smart</option>
+    <option value="3">Tanta</option>
+  </select>
+  <label for="">Age</label>
+  <input class="form-control" type=" number" [(ngModel)]="nstd.age">
+  <button class="btn btn-success mx-1" type="button" (click)="save(); showAddForm=false">Save</button>
+</div>

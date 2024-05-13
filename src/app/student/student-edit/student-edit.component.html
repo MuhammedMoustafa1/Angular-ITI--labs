@@ -1,0 +1,20 @@
+<p>student-edit works!</p>
+<div>
+  <h1>Edit Student</h1>
+
+  <label for="name">Name</label>
+  <input class="form-control" type="text" id="name" [(ngModel)]=student.name>
+
+  <label for="age">Age</label>
+  <input class="form-control" type="text" id="age" [(ngModel)]="student.age">
+
+  <label for="department">Department</label>
+  <!-- <input class="form-control" type="text" id="department" [(ngModel)]="student.department"> -->
+  <select name="" id="" [(ngModel)]="student.department" class="form-select">
+    <option value="1">Mansoura</option>
+    <option value="2">Smart</option>
+    <option value="3">Tanta</option>
+  </select>
+
+  <button class="btn btn-success" type="button" (click)="save()">Save</button>
+</div>

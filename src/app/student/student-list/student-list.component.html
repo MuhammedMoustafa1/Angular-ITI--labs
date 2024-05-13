@@ -1,0 +1,70 @@
+<p>student-list works!</p>
+
+
+<div class="container">
+  <button class="btn btn-primary"><a class="nav-link" routerLink="/students/add">Add Student</a></button>
+    <button class="btn btn-success" (click)="goToAdd()">ShowAdd</button>
+  <table class="table">
+    <thead>
+
+      <th>ID</th>
+      <th>Name</th>
+      <th>Department</th>
+      <th>Age</th>
+
+      <th>Actions</th>
+    </thead>
+    <tbody>
+      @for (item of stds; track $index ; let e = $even) {
+      <tr>
+        <td>{{item._id}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.department}}</td>
+        <td>{{item.age}}</td>
+        <td>
+          <!-- <button class="btn btn-danger mx-1" type="button" (click)="deleteStudent(item._id)">Delete</button> -->
+          <button class="btn btn-danger mx-1"><a class="text-info"
+              [routerLink]="['/students/delete',item._id]">Delete</a></button>
+          <button class="btn btn-warning mx-1" type="button" (click)="editStudent(item); showEditForm=true">Edit</button>
+          <button class="btn btn-success mx-1" type="buton" (click)="ShowStudent(item); showDetCard=true">Show</button>
+          <button class="btn btn-primary mx-1" ><a class="nav-link" routerLink="/students/details/{{item._id}}">Show Details</a></button>
+          <button class="btn btn-warning mx-1"><a class="nav-link" routerLink="/students/edit/{{item._id}}">Update Comp</a></button>
+
+        </td>
+      </tr>
+
+      }@empty {
+        <tr>
+          <td colspan="">
+            No T
+
+        </td>
+      </tr>
+      }
+
+    </tbody>
+  </table>
+<router-outlet></router-outlet>
+
+  <div class="card" [hidden]="!showDetCard">
+    <div class="card-body">
+      <h5 class="card-title">Student Details</h5>
+      <div>
+        <p class="card-text">ID: {{ hstd._id }}</p>
+        <p class="card-text">Name: {{ hstd.name }}</p>
+        <p class="card-text">Age: {{ hstd.age }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div [hidden]="!showEditForm">
+    <h1>Edit Student</h1>
+
+    <label for="">Name</label>
+    <input class="form-control" type=" text" [(ngModel)]="ustd.name">
+    <label for="">Age</label>
+    <input class="form-control" type=" text" [(ngModel)]="ustd.age">
+    <button class="btn btn-success" type="button" (click)="submitEdit(ustd); showEditForm=false;">Save</button>
+  </div>
+
+</div>

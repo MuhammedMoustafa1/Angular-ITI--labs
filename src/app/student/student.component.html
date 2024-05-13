@@ -1,0 +1,31 @@
+
+
+
+
+<div class="container">
+
+
+  <div class="card" [hidden]="!showDetCard">
+    <div class="card-body">
+      <h5 class="card-title">Student Details</h5>
+      <div>
+        <p class="card-text">ID: {{ hstd._id }}</p>
+        <p class="card-text">Name: {{ hstd.name }}</p>
+        <p class="card-text">Age: {{ hstd.age }}</p>
+      </div>
+    </div>
+  </div>
+
+<div [hidden]="!showEditForm">
+  <h1>Edit Student</h1>
+
+    <label for="">Name</label>
+    <input class="form-control" type=" text" [(ngModel)]="ustd.name">
+    <label for="">Age</label>
+    <input class="form-control" type=" text" [(ngModel)]="ustd.age">
+    <button class="btn btn-success" type="button" (click)="submitEdit(ustd); showEditForm=false;">Save</button>
+</div>
+
+
+
+</div>

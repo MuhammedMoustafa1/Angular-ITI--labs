@@ -1,0 +1,52 @@
+<div class="container">
+  <button class="btn btn-primary mx-1 my-2" type="button" (click)="showAddForm = true">Add New Department</button>
+
+  <div [hidden]="!showAddForm">
+    <h1>Add New Department</h1>
+    <label for="">ID</label>
+    <input class="form-control" type="text" [(ngModel)]="ndept._id">
+    <label for="">Name</label>
+    <input class="form-control" type="text" [(ngModel)]="ndept.name">
+    <button class="btn btn-success mx-1" type="button" (click)="addDepartment(); showAddForm=false">Save</button>
+  </div>
+
+  <table class="table">
+    <thead>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Actions</th>
+      {{allDepartments()}}
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of departments; let i = index;">
+        <td>{{ item._id }}</td>
+        <td>{{ item.name }}</td>
+        <td>
+          <button class="btn btn-danger mx-1" type="button" (click)="deleteDepartment(item._id)">Delete</button>
+          <button class="btn btn-warning mx-1" type="button"
+            (click)="editDepartment(item); showEditForm=true">Edit</button>
+          <button class="btn btn-success mx-1" type="button"
+            (click)="showDepartmentDetails(item); showDetCard=true">Show</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="card" [hidden]="!showDetCard">
+    <div class="card-body">
+      <h5 class="card-title">Department Details</h5>
+      <div>
+        <p class="card-text">ID: {{ hdept._id }}</p>
+        <p class="card-text">Name: {{ hdept.name }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div [hidden]="!showEditForm">
+    <h1>Edit Department</h1>
+    <label for="">Name</label>
+    <input class="form-control" type="text" [(ngModel)]="udept.name">
+    <button class="btn btn-success" type="button" (click)="submitEdit(udept); showEditForm=false;">Save</button>
+  </div>
+</div>
+
